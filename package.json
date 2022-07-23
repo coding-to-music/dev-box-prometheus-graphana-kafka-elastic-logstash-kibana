@@ -1,0 +1,20 @@
+{
+  "name": "dev-box-prometheus-graphana-kafka-elastic-logstash-kibana",
+  "version": "1.0.0",
+  "description": "Run the latest version of the [Elastic stack](https://www.elastic.co/elk-stack) with Docker and Docker Compose.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hesapkurdu/dev-box.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hesapkurdu/dev-box/issues"
+  },
+  "homepage": "https://github.com/Hesapkurdu/dev-box#readme"
+}
