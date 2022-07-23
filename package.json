@@ -4,6 +4,7 @@
   "description": "Run the latest version of the [Elastic stack](https://www.elastic.co/elk-stack) with Docker and Docker Compose.",
   "main": "index.js",
   "scripts": {
+    "deploy": "git add . && git commit -m Build && git push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
