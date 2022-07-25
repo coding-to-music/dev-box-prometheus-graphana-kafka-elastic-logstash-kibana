@@ -11,7 +11,13 @@ https://github.com/Hesapkurdu/dev-box
 ## Environment variables:
 
 ```java
+cp .env-example .env
+```
 
+.env
+
+```java
+ELK_VERSION=7.1.1
 ```
 
 ## GitHub
@@ -24,7 +30,6 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin git@github.com:coding-to-music/dev-box-prometheus-graphana-kafka-elastic-logstash-kibana.git
 git push -u origin main
-
 ```
 
 # Elastic stack (ELK) - Prometheus - Graphana - Kafka on Docker for developer box usage
@@ -42,7 +47,7 @@ Based on the official Docker images from Elastic:
 Start the stack using `docker-compose`:
 
 ```console
-$ docker-compose up
+docker-compose up
 ```
 
 By default, the dev box exposes the following ports:
@@ -54,3 +59,17 @@ By default, the dev box exposes the following ports:
 - 9090: Prometheus UI
 - 3000: Grafana UI (admin:admin)
 - 8080: Kafka metrics - <http://localhost:8080/metrics>
+
+```console
+docker-compose down
+```
+
+Output
+
+```
+Stopping dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_logstash_1      ... done
+Stopping dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_kibana_1        ... done
+Stopping dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_rabbitmq_1      ... done
+Stopping dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_elasticsearch_1 ... done
+Stopping dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_redis_1         ... done
+```
