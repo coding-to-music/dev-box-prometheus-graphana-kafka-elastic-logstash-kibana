@@ -73,3 +73,27 @@ Stopping dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_rabbitmq_1   
 Stopping dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_elasticsearch_1 ... done
 Stopping dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_redis_1         ... done
 ```
+
+```
+docker-compose -f docker-compose.kafka.yml up
+```
+
+Output:
+
+```
+WARNING: Some services (prometheus) use the 'deploy' key, which will be ignored. Compose does not support 'deploy' configuration - use `docker stack deploy` to deploy to a swarm.
+
+WARNING: Found orphan containers (dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_redis_1, dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_elasticsearch_1, dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_rabbitmq_1, dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_logstash_1, dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_kibana_1) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
+
+dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_kafka_1 is up-to-date
+dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_prometheus_1 is up-to-date
+
+Starting dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_kafka-jmx-exporter_1 ...
+Starting dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_kafka-jmx-exporter_1 ... error
+Starting dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_graf-db_1            ... done
+
+ERROR: for dev-box-prometheus-graphana-kafka-elastic-logstash-kibana_kafka-jmx-exporter_1  Cannot start service kafka-jmx-exporter: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "/opt/entrypoint.sh": permission denied: unknown
+
+ERROR: for kafka-jmx-exporter  Cannot start service kafka-jmx-exporter: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "/opt/entrypoint.sh": permission denied: unknown
+ERROR: Encountered errors while bringing up the project.
+```

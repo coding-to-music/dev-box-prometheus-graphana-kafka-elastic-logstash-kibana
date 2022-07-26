@@ -1,5 +1,5 @@
-
-
+version: "3.7"
+services:
   kafka:
     image: spotify/kafka
     ports:
@@ -28,10 +28,10 @@
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
-      - '--web.console.templates=/usr/share/prometheus/consoles'
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/usr/share/prometheus/console_libraries"
+      - "--web.console.templates=/usr/share/prometheus/consoles"
     ports:
       - 9091:9090
     restart: unless-stopped
@@ -43,15 +43,21 @@
       - elk
 
   grafana:
-    image: grafana/grafana:3.0.1
+    # image: grafana/grafana:3.0.1
+    image: grafana/grafana:latest
     depends_on:
       - prometheus
     ports:
-      - 3001:3000/tcp
+      - 3000:3000/tcp
     links:
       - prometheus
     volumes:
       - "graf-db:/var/lib/grafana"
+    environment:
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_BASIC_ENABLED=false
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
     restart: unless-stopped
     networks:
       - elk
@@ -59,7 +65,8 @@
   graf-db:
     command:
       - cat
-    image: infinityworks/graf-db:08
+    # image: infinityworks/graf-db:08
+    image: infinityworks/graf-db:latest
     links:
       - prometheus
     volumes:
@@ -67,6 +74,9 @@
     networks:
       - elk
 
+networks:
+  elk:
 volumes:
-    prometheus_data: {}
-    grafana_data: {}
+  prometheus_data: {}
+  grafana_data: {}
+  graf-db: {}
